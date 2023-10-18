@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chronos - Time Management</title>
+</head>
+<body>
+    <h1>Chronos - Time Management</h1>
+
+    <button id="startShift">Start Work Shift</button>
+    <button id="endShift" disabled>End Work Shift</button>
+
+    <h2>Work Shifts</h2>
+    <div id="workShiftList">
+        <!-- Work shifts will be listed here -->
+    </div>
+
+    <h2>Manually Add Work Shift</h2>
+    <form id="manualEntryForm">
+        <label for="manualStartTime">Start Time:</label>
+        <input type="datetime-local" id="manualStartTime">
+        
+        <label for="manualEndTime">End Time:</label>
+        <input type="datetime-local" id="manualEndTime">
+        
+        <input type="submit" value="Add Work Shift">
+    </form>
+
+    <script src="{% load static %}{% static 'js/main.js' %}"></script>
+</body>
+</html>
