@@ -13,12 +13,12 @@ def list_work_shifts(request):
     return JsonResponse(serializer.data, safe=False)
 
 # Add more API views for other functionalities here
-@api_view(['POST'])
-def start_work_shift(request):
-    shift = WorkShift(start_time=timezone.now())
-    shift.save()
-    serializer = WorkShiftSerializer(shift)
-    return JsonResponse(serializer.data)
+# @api_view(['POST'])
+# def start_work_shift(request):
+#     shift = WorkShift(start_time=timezone.now())
+#     shift.save()
+#     serializer = WorkShiftSerializer(shift)
+#     return JsonResponse(serializer.data)
 
 @api_view(['POST'])
 def end_work_shift(request, shift_id):

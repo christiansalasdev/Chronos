@@ -1,30 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Chronos - Time Management</title>
-</head>
-<body>
-    <h1>Chronos - Time Management</h1>
+{% extends 'base.html' %}
 
-    <button id="startShift">Start Work Shift</button>
-    <button id="endShift" disabled>End Work Shift</button>
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="display-4 text-center">Chronos - Time Management</h1>
+        
+        <!-- Timer Section -->
+        <div class="card my-4">
+            <div class="card-header">
+                Timer Controls
+            </div>
+            <div class="card-body text-center">
+                <button id="startShift" class="btn btn-success mx-2">Start Work Shift</button>
+                <button id="endShift" class="btn btn-danger mx-2" disabled>End Work Shift</button>
+            </div>
+        </div>
 
-    <h2>Work Shifts</h2>
-    <div id="workShiftList">
-        <!-- Work shifts will be listed here -->
+        <!-- Work Shifts List -->
+        <h2>Work shifts</h2>
+            <div id="workShiftList">
+                <!-- Work shifts will be listed here -->
+            </div>
+        </div>
+
+        <!-- Manual Entry Form -->
+        <div class="card my-4">
+            <div class="card-header">
+                Manually Add Work Shift
+            </div>
+            <div class="card-body">
+                <form id="manualEntryForm">
+                    <div class="form-group">
+                        <label for="manualStartTime">Start Time:</label>
+                        <input type="datetime-local" id="manualStartTime" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="manualEndTime">End Time:</label>
+                        <input type="datetime-local" id="manualEndTime" class="form-control">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add Work Shift</button>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <h2>Manually Add Work Shift</h2>
-    <form id="manualEntryForm">
-        <label for="manualStartTime">Start Time:</label>
-        <input type="datetime-local" id="manualStartTime">
-        
-        <label for="manualEndTime">End Time:</label>
-        <input type="datetime-local" id="manualEndTime">
-        
-        <input type="submit" value="Add Work Shift">
-    </form>
-
     <script src="{% load static %}{% static 'js/main.js' %}"></script>
-</body>
-</html>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        fetchWorkShifts();
+        });
+    </script>
+{% endblock %}
